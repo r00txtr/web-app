@@ -5,10 +5,9 @@ pipeline {
         stage('Build') {
             steps {
                 // Build the Docker image
-                sh '''
-                echo "Current directory before cd: $(pwd) $(ls)"
-                docker build -t web-app-image:${env.BUILD_ID} .
-                '''
+                sh 'echo "Current directory: $(ls)"'
+                sh 'echo "Current directory: $(ls)"'
+                sh 'docker build -t web-app-image:${env.BUILD_ID} .'
             }
         }
 
