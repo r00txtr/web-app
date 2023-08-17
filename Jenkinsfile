@@ -5,13 +5,12 @@ pipeline {
         stage('Build') {
             steps {
                 // Build the Docker image
-		sh script:'''
+		sh '''
 		#!/bin/bash
 		cd web-app
 		echo "This is $(pwd)"
+  		docker build -t web-app-image:${env.BUILD_ID} .
 		'''
-                script {
-                    dockerImage = docker.build("web-app-image:${env.BUILD_ID}")
                 }
             }
         }
