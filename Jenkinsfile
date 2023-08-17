@@ -6,7 +6,7 @@ pipeline {
             steps {
                 // Build the Docker image
                 sh '''
-                echo "Current directory before cd: $(pwd)"
+                echo "Current directory before cd: $(pwd) $(ls)"
                 docker build -t web-app-image:${env.BUILD_ID} .
                 '''
             }
