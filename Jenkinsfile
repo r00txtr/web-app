@@ -5,13 +5,11 @@ pipeline {
         stage('Build') {
             steps {
                 // Build the Docker image
-		sh '''
-		#!/bin/bash
-		cd web-app
-		echo "This is $(pwd)"
-  		docker build -t web-app-image:${env.BUILD_ID} .
-		'''
-                }
+                sh '''
+                cd web-app
+                echo "This is $(pwd)"
+                docker build -t web-app-image:${env.BUILD_ID} .
+                '''
             }
         }
 
@@ -37,7 +35,7 @@ pipeline {
                 sh 'ssh student@10.10.10.150 "docker run -d --name web-app -p 80:80 web-app-image:${env.BUILD_ID}"'
             }
         }
-    
+    }
 
     post {
         always {
